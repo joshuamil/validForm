@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ValidForm</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="validForm.js"></script>
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+</head>
+<body>
+
+
+  <div id="errorTarget"></div>
+
+  <form name="foo">
+
+    <!-- Input Fields -->
+    <input
+      type="text"
+      name="firstName"
+      value=""
+      placeholder="First Name"
+      data-validation="required"
+      data-message="You must enter your First Name to continue"
+      />
+
+    <input
+      type="text"
+      name="lastName"
+      value=""
+      placeholder="Last Name"
+      />
+
+    <!-- Email Input -->
+    <input
+      type="email"
+      name="email"
+      value=""
+      placeholder="you@you.com"
+      data-validation="required,email"
+      data-message="You must enter a valid email address to continue"
+      />
+
+    <!-- Select Field -->
+    <select
+      name="doDefault"
+      data-validation="required"
+      data-message="You must select an option"
+      >
+      <option value="">Default</option>
+      <option value="YES">YES</option>
+      <option value="NO">NO</option>
+    </select>
+
+
+    <!-- Radio Button -->
+    <input type="radio" name="which" value="YES" checked /> YES
+    <input type="radio" name="which" value="NO" /> NO
+
+
+    <!-- Checkboxes -->
+    <div>
+      <input
+        type="checkbox"
+        name="signup"
+        value="YES"
+        data-validation="required"
+        data-message="You must agree to the terms."
+        /> Yes, I agree
+    </div>
+
+    <!-- Input buttons -->
+    <div>
+      <input type="button" name="btnButton" value="Button" />
+      <input type="submit" name="btnButton" value="Submit" />
+      <input type="reset" name="btnButton" value="Reset" />
+      <button name="btnTag" name="btnTag">Tag</button>
+    </div>
+
+  </form>
+
+
+
+  <script>
+  $('form').validForm({
+    event: 'submit',
+    target: '#errorTarget'
+  });
+  </script>
+
+</body>
+</html>
